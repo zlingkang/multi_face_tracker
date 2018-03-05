@@ -1,0 +1,20 @@
+<launch>
+    <node pkg="camera_pub" type="camera_pub_node" name="camera_pub_node" output="screen">
+        <param name="video_path" type="string" value="/home/lingkang/Videos/friendshd.mp4" />
+        <param name="compress_image" type="bool" value="false" />
+        <param name="debug_image" type="bool" value="false" />
+        <param name="frame_rate" type="int" value="25" />
+    </node>
+    <node pkg="multi_face_tracker" type="face_detection" name="face_detection">    
+        <param name="cam_type" type="string" value="usb_cam" />
+        <param name="pyramid_up" type="bool" value="true" />
+    </node>
+    <node pkg="multi_face_tracker" type="face_ctrl" name="face_ctrl" output="screen">
+        <param name="face_landmark_path" type="string" value="$(find multi_face_tracker)/data/shape_predictor_68_face_landmarks.dat" />
+        <param name="cam_type" type="string" value="usb_cam" />
+        <param name="image_width" type="int" value="640" />
+        <param name="image_height" type="int" value="360" />
+        <param name="min_accept" type="int" value="2" />
+        <param name="min_reject" type="int" value="3" />
+    </node>
+</launch>

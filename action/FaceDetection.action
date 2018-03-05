@@ -1,0 +1,13 @@
+#goal definition
+uint32 request_id
+---
+#result definition
+uint32 request_id
+uint32 amount
+uint32[] left
+uint32[] top
+uint32[] width
+uint32[] height
+---
+#feedback
+uint32 finished
